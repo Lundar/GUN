@@ -1,0 +1,20 @@
+#version 330
+
+uniform mat4 projMatrix;
+uniform mat4 modelMatrix;
+  
+layout(location = 0) in vec3 in_pos;
+layout(location = 1) in vec4 in_color;
+layout(location = 2) in vec2 in_tex;
+
+
+out vec4 pass_color;
+out vec2 pass_tex;
+
+
+void main(void)
+{
+gl_Position=projMatrix * modelMatrix * vec4(in_pos,1.0);
+pass_color=in_color;
+pass_tex=in_tex;
+}
